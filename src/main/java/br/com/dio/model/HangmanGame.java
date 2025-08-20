@@ -2,6 +2,7 @@ package br.com.dio.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static br.com.dio.model.HangmanGameStatus.*;
 
@@ -44,10 +45,20 @@ public class HangmanGame {
             if (failAttempts.size() >= 6){
                 this.hangmanGameStatus = LOSE;
             }
+            rebuildHangman((this.hangmanPaths.removeFirst()));
             return;
         }
-    }
+        this.characters.forEach(c-> {
+            if (c.getCharacter() == found.getFirst().getCharacter()) {
+                c.enableVisibility();
 
+            }
+        });
+        if (this.characters.stream().noneMatch(HangmanChar::isInvisible)) {
+            this.hangmanGameStatus = WIN;
+        }
+        rebuildHangman(found.toArray(HangmanChar[]::new));
+    }
     @Override
     public String toString() {
         return this.hangman;
@@ -68,7 +79,7 @@ public class HangmanGame {
         final var LEGS_LINE = 5;
         return  new ArrayList<>(
                 List.of(
-                        new HangmanChar('0', this.lineSize * HEAD_LINE + 6),// Head
+                        new HangmanChar('O', this.lineSize * HEAD_LINE + 6),// Head
                         new HangmanChar('|', this.lineSize * BODY_LINE + 6),// Head
                         new HangmanChar('/', this.lineSize * BODY_LINE + 5),// Head
                         new HangmanChar('\\', this.lineSize * BODY_LINE + 7),// Head
@@ -78,16 +89,29 @@ public class HangmanGame {
                 )
         );
     }
-    private void buildHangmanDesign(final String whiteSpaces, final String charactersSpace) {
-        // Implement the logic to build the hangman design
-        this.hangman =  "  -------  " + whiteSpaces + System.lineSeparator() +
-                        "  |     |  " + whiteSpaces + System.lineSeparator() +
-                        "  |     |  " + whiteSpaces + System.lineSeparator() +
-                        "  |        " + whiteSpaces + System.lineSeparator() +
-                        "  |        " + whiteSpaces + System.lineSeparator() +
-                        "  |        " + whiteSpaces + System.lineSeparator() +
-                        "  |        " + whiteSpaces + System.lineSeparator() +
-                        "===========" + charactersSpace + System.lineSeparator();
+    private void rebuildHangman(final HangmanChar...hangmanChars){
+        var hangmanBuilder = new StringBuilder(this.hangman);
+        Stream.of(hangmanChars).forEach(
+                h -> hangmanBuilder.setCharAt(h.getPosition(), h.getCharacter()));
+                var failMessage = this.failAttempts.isEmpty() ? "" :
+                        "  Tentativas falhas: " + this.failAttempts;
+                this.hangman = hangmanBuilder.substring(0, this.hangmanInitialSize)+ failMessage;
+
+
+
+
+    }
+    private void buildHangmanDesign( final String whiteSpaces, final String characterSpace) {
+        // Implementação do método para construir o jogo da forca
+
+        this.hangman =  " -----  "  + whiteSpaces + System.lineSeparator() +
+                        " |    | "  + whiteSpaces + System.lineSeparator() +
+                        " |    | "  + whiteSpaces + System.lineSeparator() +
+                        " |      "  + whiteSpaces + System.lineSeparator() +
+                        " |      "  + whiteSpaces + System.lineSeparator() +
+                        " |      "  + whiteSpaces + System.lineSeparator() +
+                        " |      "  + whiteSpaces + System.lineSeparator() +
+                        "========="  + characterSpace + System.lineSeparator();
 
     }
 }

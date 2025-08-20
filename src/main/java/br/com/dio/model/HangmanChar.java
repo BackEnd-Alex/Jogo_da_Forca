@@ -20,7 +20,7 @@ public class HangmanChar {
     public char getCharacter() {
         return character;
     }
-    public boolean isVisible() {
+    public boolean isInvisible() {
         return isVisible;
     }
     public void enableVisibility() {
