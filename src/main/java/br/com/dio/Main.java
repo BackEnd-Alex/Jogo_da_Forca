@@ -11,7 +11,7 @@ public class Main {
                 .map(HangmanChar::new)
                 .toList();
 
-                   var characters = Stream.of("c", "a", "s", "a")
+                   var characters = Stream.of("t", "e", "s", "t")
                     .map(s -> s.toLowerCase().charAt(0))
                     .map(HangmanChar::new)
                     .toList();
@@ -26,5 +26,15 @@ public class Main {
             hangmanGame.inputCharacter('s');
             System.out.println(hangmanGame);
             hangmanGame.inputCharacter('t');
-        }
+          System.out.println(hangmanGame);
+//            hangmanGame.inputCharacter('f');
+//            System.out.println(hangmanGame);
+//            hangmanGame.inputCharacter('g');
+//            System.out.println(hangmanGame);
+//            hangmanGame.inputCharacter('h');
+//            System.out.println(hangmanGame);
+//            hangmanGame.inputCharacter('i');
+//            System.out.println(hangmanGame);
+//            hangmanGame.inputCharacter('j');
+            }
     }

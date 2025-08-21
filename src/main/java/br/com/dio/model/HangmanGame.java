@@ -1,5 +1,7 @@
 package br.com.dio.model;
 
+import br.com.dio.exception.LetterAlreadyInputtedException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -22,7 +24,7 @@ public class HangmanGame {
     public HangmanGame(List<HangmanChar> characters) {
 
         var whiteSpaces = " ".repeat(characters.size());
-        var charactersSpace = "  -  ".repeat(characters.size());
+        var charactersSpace = "-".repeat(characters.size());
         this.lineSize = HANGMAN_INITIAL_LINE_LENGTH_WITH_LINE_SEPARATOR + whiteSpaces.length();
         this.hangmanGameStatus = PENDING;
         this.hangmanPaths = buildHangmanPathsPositions();
@@ -40,6 +42,9 @@ public class HangmanGame {
         }
         var found = this.characters.stream().filter(c -> c.getCharacter()
                 == character).toList();
+        if (this.failAttempts.contains(character)){
+            throw new LetterAlreadyInputtedException("A letra '" + character + "' já foi informada.");
+        }
         if (found.isEmpty()){
             failAttempts.add(character);
             if (failAttempts.size() >= 6){
@@ -47,6 +52,9 @@ public class HangmanGame {
             }
             rebuildHangman((this.hangmanPaths.removeFirst()));
             return;
+        }
+        if(found.getFirst().isInvisible()) {
+            throw new LetterAlreadyInputtedException("A letra '" + character + "' já foi informada.");
         }
         this.characters.forEach(c-> {
             if (c.getCharacter() == found.getFirst().getCharacter()) {
@@ -85,7 +93,6 @@ public class HangmanGame {
                         new HangmanChar('\\', this.lineSize * BODY_LINE + 7),// Head
                         new HangmanChar('/', this.lineSize * LEGS_LINE + 5),// Head
                         new HangmanChar('\\', this.lineSize * LEGS_LINE + 7)// Head
-
                 )
         );
     }
