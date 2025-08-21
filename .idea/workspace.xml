@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="926fa193-ebfb-44eb-af0c-7a9d8c0e56ee" name="Changes" comment="&quot;Atualizando Projeto.&quot;">
+    <list default="true" id="926fa193-ebfb-44eb-af0c-7a9d8c0e56ee" name="Changes" comment="&quot;Corrijindo alguns erros na hora de compilar.&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/dio/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dio/exception/GameIsFinishedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/dio/exception/GameIsFinishedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/dio/model/HangmanGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/dio/model/HangmanGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,19 +52,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.hangman [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.hangman [:Main.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.com.dio.Main" />
       <module name="hangman.main" />
+      <option name="PROGRAM_PARAMETERS" value="t e s t e" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="br.com.dio.*" />
@@ -129,12 +131,48 @@
       <option name="project" value="LOCAL" />
       <updated>1755717287461</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="&quot;Corrijindo alguns erros na hora de compilar.&quot;">
+      <option name="closed" value="true" />
+      <created>1755786910325</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1755786910325</updated>
+    </task>
+    <task id="LOCAL-00007" summary="&quot;Corrijindo alguns erros na hora de compilar.&quot;">
+      <option name="closed" value="true" />
+      <created>1755786922232</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1755786922232</updated>
+    </task>
+    <task id="LOCAL-00008" summary="&quot;Corrijindo alguns erros na hora de compilar.&quot;">
+      <option name="closed" value="true" />
+      <created>1755786963420</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1755786963420</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;Criação Projeto Jogo da Forca.&quot;" />
     <MESSAGE value="&quot;Atualizando Projeto.&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Atualizando Projeto.&quot;" />
+    <MESSAGE value="&quot;Corrijindo alguns erros na hora de compilar.&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Corrijindo alguns erros na hora de compilar.&quot;" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/dio/model/HangmanGame.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,5 +1,6 @@
 package br.com.dio.model;
 
+import br.com.dio.exception.GameIsFinishedException;
 import br.com.dio.exception.LetterAlreadyInputtedException;
 
 import java.util.ArrayList;
@@ -33,15 +34,19 @@ public class HangmanGame {
         this.hangmanInitialSize = this.hangman.length();
 
     }
+    public HangmanGameStatus getHangmanGameStatus() {
+        return hangmanGameStatus;
+    }
     public void inputCharacter(final char character) {
         if (this.hangmanGameStatus != PENDING) {
             var message = this.hangmanGameStatus == WIN ?
                     "Parabéns, você acertou a palavra!" :
                     "Que pena, você errou a palavra! Tente novamente.";
-            throw new RuntimeException(message);
+            throw new GameIsFinishedException(message);
         }
         var found = this.characters.stream().filter(c -> c.getCharacter()
                 == character).toList();
+
         if (this.failAttempts.contains(character)){
             throw new LetterAlreadyInputtedException("A letra '" + character + "' já foi informada.");
         }
@@ -49,8 +54,9 @@ public class HangmanGame {
             failAttempts.add(character);
             if (failAttempts.size() >= 6){
                 this.hangmanGameStatus = LOSE;
+                return;
             }
-            rebuildHangman((this.hangmanPaths.removeFirst()));
+            rebuildHangman((this.hangmanPaths.remove(0)));
             return;
         }
         if(found.getFirst().isInvisible()) {
@@ -64,6 +70,7 @@ public class HangmanGame {
         });
         if (this.characters.stream().noneMatch(HangmanChar::isInvisible)) {
             this.hangmanGameStatus = WIN;
+            return;
         }
         rebuildHangman(found.toArray(HangmanChar[]::new));
     }
